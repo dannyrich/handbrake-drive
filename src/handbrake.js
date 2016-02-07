@@ -76,15 +76,14 @@ function prepAndRip(driveName, handlers) {
 			output: path.join(config.HANDBRAKE_OUTPUT_DIR, `${driveName}.m4v`),
 		});
 		let key;
-		console.log('Spawn!');
-		console.log(options);
 
 		handbrake
-			.spawn(getHandbrakeOptions());
-
-		for (key in handlers) {
-			handbrake.on(key, handers[key]);
-		}
+			.on('error', handers.error || () => null)
+			.on('start', handers.start || () => null)
+			.on('output', handers.output || () => null)
+			.on('progress', handers.progress || () => null)
+			.on('end', handers.end || () => null)
+			.spawn(options);
 	}
 }
 
