@@ -17,7 +17,7 @@ function getHandbrakeOptions() {
 
 function getDriveLocation(driveName) {
 	let drive = path.join('Volumes', driveName);
-
+	console.log(`Checking drive ${drive}`);
 	if (isDVD(drive)) {
 		return getDVDLoc(drive);
 	} else if (isBD(drive)) {
@@ -37,6 +37,7 @@ function isDVD(loc) {
 }
 
 function getDVDLoc(loc) {
+	console.log(`DVD? ${path.join(loc, 'VIDEO_TS')}`);
 	return path.join(loc, 'VIDEO_TS');
 }
 
@@ -50,6 +51,7 @@ function isBD(loc) {
 }
 
 function getBDLoc(loc) {
+	console.log(`BD? ${path.join(loc, 'BDMV')}`);
 	return path.join(loc, 'BDMV');
 }
 
@@ -65,7 +67,7 @@ function prepAndRip(driveName, handlers) {
 		let key;
 		console.log('Spawn!');
 		console.log(options);
-		
+
 		handbrake
 			.spawn(getHandbrakeOptions());
 
