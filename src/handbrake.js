@@ -16,10 +16,16 @@ function getHandbrakeOptions() {
 }
 
 function getDriveLocation(driveName) {
-	let drive = path.join('Volumes', driveName);
+	let drive = path.join(path.sep, 'Volumes', driveName);
 	console.log(`Checking drive ${drive}`);
+	
+	if (isDVD(drive)) {
+		return getDVDLoc(drive);
+	} else if (isBD(drive)) {
+		return getBDLoc(drive);
+	}
 
-	return drive;
+	return false;
 }
 
 function isDVD(loc) {
