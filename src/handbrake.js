@@ -31,6 +31,8 @@ function getDriveLocation(driveName) {
 function isDVD(loc) {
 	try {
 		let stat = fs.statSync(getDVDLoc(loc));
+		console.log('DVD stat');
+		console.log(stat);
 		return stat.isFile() || stat.isDirectory();
 	} catch (e) {
 		return false;
@@ -45,6 +47,8 @@ function getDVDLoc(loc) {
 function isBD(loc) {
 	try {
 		let stat = fs.statSync(getBDLoc(loc));
+		console.log('BD stat');
+		console.log(stat);
 		return stat.isFile() || stat.isDirectory();
 	} catch (e) {
 		return false;
