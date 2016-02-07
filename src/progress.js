@@ -15,12 +15,10 @@ Progress.prototype.tick = (perc, string) => {
 		this.completed();
 	}
 
-	this.showTimeout = setTimeout(() => this.show.bind(this), 200);
+	this.show();
 }
 
 Progress.prototype.show = () => {
-	this.clear();
-
 	let string = this.string + ' ' + Array(Math.round(20 * this.perc)).join('=') + Array(Math.round(20 - (20 * this.perc)));
 
 	if (string !== this.lastString) {
@@ -30,11 +28,6 @@ Progress.prototype.show = () => {
 
 		this.lastString = string;
 	}
-}
-
-Progress.prototype.clear = () => {
-	clearTimeout(this.showTimeout);
-	this.showTimeout = null;
 }
 
 Progress.prototype.completed = () => {
