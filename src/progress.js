@@ -15,7 +15,7 @@ Progress.prototype.tick = (perc, string) => {
 		this.completed();
 	}
 
-	this.showTimeout = setTimeout(this.show.bind(this), 200);
+	this.showTimeout = setTimeout(() => this.show.bind(this), 200);
 }
 
 Progress.prototype.show = () => {
