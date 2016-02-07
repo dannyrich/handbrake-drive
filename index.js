@@ -10,7 +10,7 @@ drive.watch(handbrake.rip, {
 	error: onError,
 	start: onStart,
 	output: onOutput,
-	progress: onProgress
+	progress: onProgress,
 	complete: onComplete
 });
 
@@ -30,4 +30,8 @@ function onOutput(output) {
 
 function onProgress(p) {
 	progress.perc(p.percentComplete, `Encoding @${p.fps} - ETA ${p.eta}`);
+}
+
+function onComplete() {
+	progress.perc(1, 'Completed');
 }

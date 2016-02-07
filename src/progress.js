@@ -11,7 +11,7 @@ Progress.prototype.tick = (perc, string) => {
 	this.perc = perc;
 	this.string = string || this.string;
 
-	if (this.perc >= 100) {
+	if (this.perc >= 1) {
 		this.completed();
 	}
 
@@ -41,4 +41,4 @@ Progress.prototype.completed = () => {
 	this.stream.write('\n');
 }
 
-export default Progress;
+exports = module.exports = Progress;

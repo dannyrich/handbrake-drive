@@ -65,6 +65,6 @@ function prepAndRip(driveName, handlers) {
 }
 
 
-export default Handbrake = {
+exports = module.exports = {
 	rip: prepAndRip
 };

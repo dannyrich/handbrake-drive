@@ -19,6 +19,7 @@
   "homepage": "https://github.com/dannyrich/handbrake-drive#readme",
   "dependencies": {
     "drive-watch": "^0.3.0",
-    "handbrake-js": "^2.0.8"
+    "handbrake-js": "^2.0.8",
+    "lodash": "^4.2.1"
   }
 }

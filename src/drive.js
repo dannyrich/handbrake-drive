@@ -18,7 +18,7 @@ const dw = new DriveWatch(runCallbacks, {
 
 dw.start();
 
-export default Drive = {
+exports = module.exports = {
 	watch: (callback) => {
 		if (typeof callback === 'function') {
 			callbacks.push(callback);
