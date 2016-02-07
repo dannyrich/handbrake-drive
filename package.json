@@ -1,0 +1,24 @@
+{
+  "name": "handbrake-drive",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dannyrich/handbrake-drive.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dannyrich/handbrake-drive/issues"
+  },
+  "homepage": "https://github.com/dannyrich/handbrake-drive#readme",
+  "dependencies": {
+    "drive-watch": "^0.3.0",
+    "handbrake-js": "^2.0.8"
+  }
+}
