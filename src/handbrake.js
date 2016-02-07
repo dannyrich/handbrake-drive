@@ -37,6 +37,8 @@ function isDVD(loc) {
 		console.log(stat);
 		return stat.isFile() || stat.isDirectory();
 	} catch (e) {
+		console.log('DVD Error');
+		console.log(e);
 		return false;
 	}
 }
@@ -53,6 +55,8 @@ function isBD(loc) {
 		console.log(stat);
 		return stat.isFile() || stat.isDirectory();
 	} catch (e) {
+		console.log('BD Error');
+		console.log(e);
 		return false;
 	}
 }
