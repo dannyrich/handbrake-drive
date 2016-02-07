@@ -1,0 +1,11 @@
+{
+	// The directory to output the built files
+	"HANDBRAKE_OUTPUT_DIR": "/Volumes/Backup/Movies",
+	// The handbrake options to use. See https://trac.handbrake.fr/wiki/CLIGuide#options
+	"HANDBRAKE_OPTIONS": {
+		"main-feature": true,
+		"profile": "Apple TV 3",
+		"optimize": true,
+		"audio": "copy",
+	}
+}
