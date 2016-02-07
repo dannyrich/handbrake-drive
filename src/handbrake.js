@@ -55,7 +55,7 @@ function prepAndRip(driveName, handlers) {
 	console.log(`Got ${loc} for location.`);
 
 	if (loc) {
-		const options = $.extend(getHandbrakeOptions(), {
+		const options = _.extend(getHandbrakeOptions(), {
 			input: loc,
 			output: path.join(config.HANDBRAKE_OUTPUT_DIR, `${driveName}.m4v`),
 		});
