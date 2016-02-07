@@ -5,6 +5,8 @@ const DriveWatch = require('drive-watch');
 let callbacks = [];
 
 function runCallbacks(eventType, driveName) {
+	console.log(`${eventType} on ${driveName}`);
+	
 	if (eventType !== 'mount') {
 		return;
 	}
