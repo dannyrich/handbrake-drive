@@ -19,8 +19,6 @@ function getDriveLocation(driveName) {
 	let drive = path.join(path.sep, 'Volumes', driveName);
 	console.log(`Checking drive ${drive}`);
 	
-	return drive;
-
 	if (isDVD(drive)) {
 		return getDVDLoc(drive);
 	} else if (isBD(drive)) {
