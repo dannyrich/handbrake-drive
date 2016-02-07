@@ -17,57 +17,12 @@ function getHandbrakeOptions() {
 
 function getDriveLocation(driveName) {
 	let drive = path.join(path.sep, 'Volumes', driveName);
-	console.log(`Checking drive ${drive}`);
-	
 	return drive;
-
-	if (isDVD(drive)) {
-		return getDVDLoc(drive);
-	} else if (isBD(drive)) {
-		return getBDLoc(drive);
-	}
-
-	return false;
-}
-
-function isDVD(loc) {
-	try {
-		let stat = fs.statSync(getDVDLoc(loc));
-		console.log('DVD stat');
-		console.log(stat);
-		return stat.isFile() || stat.isDirectory();
-	} catch (e) {
-		console.log('DVD Error');
-		console.log(e);
-		return false;
-	}
-}
-
-function getDVDLoc(loc) {
-	console.log(`DVD? ${path.join(loc, 'VIDEO_TS')}`);
-	return path.join(loc, 'VIDEO_TS');
-}
-
-function isBD(loc) {
-	try {
-		let stat = fs.statSync(getBDLoc(loc));
-		console.log('BD stat');
-		console.log(stat);
-		return stat.isFile() || stat.isDirectory();
-	} catch (e) {
-		console.log('BD Error');
-		console.log(e);
-		return false;
-	}
-}
-
-function getBDLoc(loc) {
-	console.log(`BD? ${path.join(loc, 'BDMV')}`);
-	return path.join(loc, 'BDMV');
 }
 
 function prepAndRip(driveName, handlers) {
 	const loc = getDriveLocation(driveName);
+
 	console.log(`Got ${loc} for location.`);
 
 	if (loc) {
@@ -75,8 +30,7 @@ function prepAndRip(driveName, handlers) {
 			input: loc,
 			output: path.join(config.HANDBRAKE_OUTPUT_DIR, `${driveName}.m4v`),
 		});
-		let key;
-
+		
 		handbrake
 			.spawn(options)
 			.on('error', handlers.error || () => null)
