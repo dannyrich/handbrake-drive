@@ -78,11 +78,11 @@ function prepAndRip(driveName, handlers) {
 		let key;
 
 		handbrake
-			.on('error', handers.error || () => null)
-			.on('start', handers.start || () => null)
-			.on('output', handers.output || () => null)
-			.on('progress', handers.progress || () => null)
-			.on('end', handers.end || () => null)
+			.on('error', handlers.error || () => null)
+			.on('start', handlers.start || () => null)
+			.on('output', handlers.output || () => null)
+			.on('progress', handlers.progress || () => null)
+			.on('end', handlers.end || () => null)
 			.spawn(options);
 	}
 }
