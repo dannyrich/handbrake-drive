@@ -6,12 +6,12 @@ let callbacks = [];
 
 function runCallbacks(eventType, driveName) {
 	console.log(`${eventType} on ${driveName}`);
-	
+
 	if (eventType !== 'mount') {
 		return;
 	}
 
-	callbacks.forEach(callback => callback(driveName));
+	setTimeout(() => callbacks.forEach(callback => callback(driveName)), 10000);
 }
 
 const dw = new DriveWatch(runCallbacks, { 
