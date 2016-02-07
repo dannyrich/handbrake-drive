@@ -6,12 +6,14 @@ const Progress = require('./src/progress');
 
 let progress;
 
-drive.watch(handbrake.rip, {
-	error: onError,
-	start: onStart,
-	output: onOutput,
-	progress: onProgress,
-	end: onEnd
+drive.watch((drive) => {
+	handbrake.rip(drive, {
+		error: onError,
+		start: onStart,
+		output: onOutput,
+		progress: onProgress,
+		end: onEnd
+	});
 });
 
 function onError(error) {
