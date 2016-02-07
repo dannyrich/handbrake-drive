@@ -27,13 +27,13 @@ function onStart() {
 }
 
 function onOutput(output) {
-	console.log(output);
+
 }
 
 function onProgress(p) {
-	progress.perc(p.percentComplete, `Encoding @${p.fps} - ETA ${p.eta}`);
+	progress.tick(p.percentComplete, `Encoding @${p.fps} - ETA ${p.eta}`);
 }
 
 function onEnd() {
-	progress.perc(1, 'Completed');
+	progress.tick(1, 'Completed');
 }
