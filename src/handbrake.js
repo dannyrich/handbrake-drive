@@ -16,7 +16,7 @@ function getHandbrakeOptions() {
 }
 
 function getDriveLocation(driveName) {
-	let drive = path.join('Volumes', 'driveName');
+	let drive = path.join('Volumes', driveName);
 
 	if (isDVD(drive)) {
 		return getDVDLoc(drive);
@@ -55,6 +55,7 @@ function getBDLoc(loc) {
 
 function prepAndRip(driveName, handlers) {
 	const loc = getDriveLocation(driveName);
+	console.log(`Got ${loc} for location.`);
 
 	if (loc) {
 		const options = $.extend(getHandbrakeOptions(), {
@@ -62,7 +63,9 @@ function prepAndRip(driveName, handlers) {
 			output: path.join(config.HANDBRAKE_OUTPUT_DIR, `${driveName}.m4v`),
 		});
 		let key;
-
+		console.log('Spawn!');
+		console.log(options);
+		
 		handbrake
 			.spawn(getHandbrakeOptions());
 
