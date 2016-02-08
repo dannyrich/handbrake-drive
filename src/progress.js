@@ -7,8 +7,7 @@ function Progress(string) {
 }
 
 Progress.prototype.tick = function (perc, string) {
-	console.log('Tick');
-	console.log(this);
+
 	this.perc = perc;
 	this.string = string || this.string;
 
@@ -20,7 +19,12 @@ Progress.prototype.tick = function (perc, string) {
 }
 
 Progress.prototype.show = function () {
-	let string = this.string + ' ' + Array(Math.round(20 * this.perc)).join('=') + Array(Math.round(20 - (20 * this.perc)));
+	const numTot = 20;
+	const numFilled = Math.round(numTot * this.perc);
+
+	const bar = Array(numFilled).join('=') + Array(numTot - numFilled).join(' ');
+
+	let string = this.string + ' ' + bar;
 
 	if (string !== this.lastString) {
 		this.stream.cursorTo(0);
