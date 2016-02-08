@@ -24,7 +24,7 @@ Progress.prototype.show = function () {
 	const numTot = 20;
 	const numFilled = Math.round(numTot * this.perc);
 
-	const bar = Array(numFilled).join('=') + Array(numTot - numFilled).join(' ');
+	const bar = Array(numFilled).join('◼') + Array(numTot - numFilled).join('◻︎');
 
 	let string = `|${bar}| ${this.string}`;
 
