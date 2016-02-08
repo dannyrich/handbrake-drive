@@ -5,9 +5,14 @@ function Progress(string) {
 	this.showTimeout = null;
 	this.perc = 0;
 	this.string = string;
+
+	console.log('Construct');
+	console.log(this);
 }
 
 Progress.prototype.tick = (perc, string) => {
+	console.log('Tick');
+	console.log(this);
 	this.perc = perc;
 	this.string = string || this.string;
 
