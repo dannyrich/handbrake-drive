@@ -19,7 +19,6 @@ Progress.prototype.tick = function (perc, string) {
 }
 
 Progress.prototype.show = function () {
-	console.log(this.perc);
 
 	const numTot = 20;
 	const numFilled = Math.round(numTot * this.perc);
