@@ -2,9 +2,7 @@
 
 const drive = require('./src/drive');
 const handbrake = require('./src/handbrake');
-const Progress = require('./src/progress');
-
-let progress;
+const progress = require('./src/progress');
 
 drive.watch((drive) => {
 	handbrake.rip(drive, {
@@ -23,7 +21,6 @@ function onError(error) {
 
 function onStart() {
 	console.log('Handbrake CLI is ready.');
-	progress = new Progress('Ripping Disc');
 }
 
 function onOutput(output) {

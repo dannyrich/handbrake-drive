@@ -4,10 +4,6 @@ function Progress(string) {
 	this.stream = process.stderr;
 	this.showTimeout = null;
 	this.perc = 0;
-	this.string = string;
-
-	console.log('Construct');
-	console.log(this);
 }
 
 Progress.prototype.tick = (perc, string) => {
@@ -39,4 +35,4 @@ Progress.prototype.completed = () => {
 	this.stream.write('\n');
 }
 
-exports = module.exports = Progress;
+exports = module.exports = new Progress();
