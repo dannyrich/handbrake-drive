@@ -28,7 +28,7 @@ function onOutput(output) {
 }
 
 function onProgress(p) {
-	progress.tick(p.percentComplete, `Encoding @${p.fps} - ETA ${p.eta}`);
+	progress.tick(p.percentComplete / 100, `Encoding - ETA ${p.eta}`);
 }
 
 function onEnd() {
