@@ -24,7 +24,7 @@ Progress.prototype.show = function () {
 
 	const bar = Array(numFilled).join('=') + Array(numTot - numFilled).join(' ');
 
-	let string = this.string + ' ' + bar;
+	let string = `${this.string} |${bar}`;
 
 	if (string !== this.lastString) {
 		this.stream.cursorTo(0);
