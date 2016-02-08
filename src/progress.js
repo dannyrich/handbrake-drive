@@ -8,6 +8,8 @@ function Progress(string) {
 
 Progress.prototype.tick = function (perc, string) {
 
+	console.log(perc);
+
 	this.perc = perc;
 	this.string = string || this.string;
 
