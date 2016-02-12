@@ -1,43 +1,40 @@
 'use strict';
 
-function Progress(string) {
-	this.stream = process.stderr;
-	this.showTimeout = null;
-	this.perc = 0;
+function Progress() {
+    this.stream = process.stderr;
+    this.showTimeout = null;
+    this.perc = 0;
 }
 
-Progress.prototype.tick = function (perc, string) {
+Progress.prototype.tick = function tick(perc, string) {
 
-	this.perc = perc;
-	this.string = string || this.string;
+    this.perc = perc;
+    this.string = string || this.string;
 
-	if (this.perc >= 1) {
-		this.completed();
-	}
+    this.show();
+};
 
-	this.show();
-}
+Progress.prototype.show = function show() {
 
-Progress.prototype.show = function () {
+    const numTot = 20;
+    const numFilled = Math.min(20, Math.round(numTot * this.perc));
+    const numEmpty = numTot - numFilled;
 
-	const numTot = 20;
-	const numFilled = Math.round(numTot * this.perc);
+    const bar = '◼'.repeat(numFilled) + '◻︎'.repeat(numEmpty);
 
-	const bar = Array(numFilled).join('◼') + Array(numTot - numFilled).join('◻︎');
+    const string = `|${bar}| ${this.string}`;
 
-	let string = `|${bar}| ${this.string}`;
+    if (string !== this.lastString) {
+        this.stream.cursorTo(0);
+        this.stream.write(string);
+        this.stream.clearLine(1);
 
-	if (string !== this.lastString) {
-		this.stream.cursorTo(0);
-		this.stream.write(string);
-		this.stream.clearLine(1);
+        this.lastString = string;
+    }
+};
 
-		this.lastString = string;
-	}
-}
-
-Progress.prototype.completed = function () {
-	this.stream.write('\n');
-}
+Progress.prototype.completed = function completed() {
+    this.stream.write('\n');
+};
 
 exports = module.exports = new Progress();

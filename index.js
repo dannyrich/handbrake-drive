@@ -4,33 +4,28 @@ const drive = require('./src/drive');
 const handbrake = require('./src/handbrake');
 const progress = require('./src/progress');
 
-drive.watch((drive) => {
-	handbrake.rip(drive, {
-		error: onError,
-		start: onStart,
-		output: onOutput,
-		progress: onProgress,
-		end: onEnd
-	});
+drive.watch((dr) => {
+    handbrake.rip(dr, {
+        error: onError,
+        start: onStart,
+        progress: onProgress,
+        end: onEnd
+    });
 });
 
 function onError(error) {
-	console.log('ERROR!');
-	console.log(error);
+    console.log('ERROR!');
+    console.log(error);
 }
 
 function onStart() {
-	console.log('Handbrake CLI is ready.');
-}
-
-function onOutput(output) {
-
+    console.log('Handbrake CLI is ready.');
 }
 
 function onProgress(p) {
-	progress.tick(p.percentComplete / 100, `Encoding - ETA ${p.eta}`);
+    progress.tick(p.percentComplete / 100, `Encoding - ETA ${p.eta}`);
 }
 
 function onEnd() {
-	progress.tick(1, 'Completed');
+    progress.tick(1, 'Completed');
 }
